@@ -723,10 +723,11 @@ defmodule Hunter do
     * `app` - application details, see: `Hunter.Application.create_app/5` for more details.
     * `username` - account's email
     * `password` - account's password
+    * `scopes`   - requested scopes
     * `base_url` - API base url, default: `https://mastodon.social`
 
   """
-  defdelegate log_in(app, username, password, base_url \\ nil), to: Hunter.Client
+  defdelegate log_in(app, username, password, scopes, base_url \\ nil), to: Hunter.Client
 
   @doc """
   Fetch user's blocked domains

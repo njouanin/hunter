@@ -295,6 +295,7 @@ defmodule Hunter.Api.HTTPClient do
         %Hunter.Application{client_id: client_id, client_secret: client_secret},
         username,
         password,
+        scopes,
         base_url
       ) do
     payload = %{
@@ -302,7 +303,8 @@ defmodule Hunter.Api.HTTPClient do
       client_secret: client_secret,
       grant_type: "password",
       username: username,
-      password: password
+      password: password,
+      scope: scopes |> Enum.join(" ")
     }
 
     response =

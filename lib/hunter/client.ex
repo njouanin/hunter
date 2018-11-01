@@ -43,11 +43,12 @@ defmodule Hunter.Client do
     * `app` - application details, see: `Hunter.Application.create_app/5` for more details.
     * `username` - your account's email
     * `password` - your password
+    * `scopes`   - requested scopes
     * `base_url` - API base url, default: `https://mastodon.social`
 
   """
-  @spec log_in(Hunter.Application.t(), String.t(), String.t(), String.t()) :: Hunter.Client.t()
-  def log_in(app, username, password, base_url \\ nil) do
-    @hunter_api.log_in(app, username, password, base_url || Hunter.Config.api_base_url())
+  @spec log_in(Hunter.Application.t(), String.t(), String.t(), [String.t()], String.t()) :: Hunter.Client.t()
+  def log_in(app, username, password, scopes, base_url \\ nil) do
+    @hunter_api.log_in(app, username, password, scopes, base_url || Hunter.Config.api_base_url())
   end
 end
